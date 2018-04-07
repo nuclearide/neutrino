@@ -1,6 +1,6 @@
-[submodule "neutrino-osx"]
-	path = neutrino-osx
-	url = https://github.com/nuclearide/neutrino-osx
 [submodule "neutrino-windows"]
 	path = neutrino-windows
 	url = https://github.com/nuclearide/neutrino-windows
+[submodule "osx"]
+	path = neutrino-osx
+	url = https://github.com/nuclearide/neutrino-osx
