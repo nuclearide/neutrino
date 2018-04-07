@@ -1,0 +1,9 @@
+{
+    "name": "neutrino",
+    "version": "0.0.1",
+    "description": "",
+    "scripts": {
+        "install": "node install.js"
+    },
+    "bin": "run.js"
+}
