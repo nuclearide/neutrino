@@ -3,6 +3,7 @@
     "version": "0.0.1",
     "description": "",
     "scripts": {
+        "preinstall": "grep url .gitmodules | sed 's/.*= //' | while read url; do git clone $url; done",
         "install": "node install.js"
     },
     "bin": "run.js"
