@@ -5,5 +5,6 @@
     "scripts": {
         "install": "node install.js"
     },
-    "bin": "run.js"
+    "bin": "run.js",
+    "main": "index.js"
 }
