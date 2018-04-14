@@ -6,7 +6,7 @@ if(process.platform == "darwin") {
         child_process.execSync("grep url .gitmodules | sed 's/.*= //' | while read url; do git clone $url; done");
     }
     if (!~child_process.execSync("which xcodebuild").toString().indexOf('not found')) {
-        var child = child_process.spawn("xcodebuild", ["-configuration","Debug","-alltargets"], {
+        var child = child_process.spawn("xcodebuild", ['CODE_SIGN_IDENTITY=""', 'CODE_SIGNING_REQUIRED=NO', "-configuration","Debug","-alltargets"], {
             cwd: 'neutrino-osx'
         });
         child.stdout.pipe(process.stdout);
