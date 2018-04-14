@@ -2,7 +2,7 @@ var child_process = require('child_process');
 var fs = require('fs');
 
 if(process.platform == "darwin") {
-    if(!fs.existsSync('./neutrino-osx')) {
+    if(!fs.existsSync('./neutrino-osx/Neutrino')) {
         child_process.execSync("grep url .gitmodules | sed 's/.*= //' | while read url; do git clone $url; done");
     }
     if (!~child_process.execSync("which xcodebuild").toString().indexOf('not found')) {
