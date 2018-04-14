@@ -96,6 +96,17 @@ export class FileSystem extends Module {
             }, seq);
         });
     }
+    static async readdir(filePath) {
+        return new Promise((resolve) => {
+            setCallbackHandler(++seq, (value) => {
+                delete callbacks[seq];
+                resolve(value);
+            });
+            sendMessage("FileSystem", "readdir", {
+                filePath
+            }, seq);
+        });
+    }
     static async writeFile(filePath, contents) {
         return new Promise((resolve) => {
             setCallbackHandler(++seq, (value) => {

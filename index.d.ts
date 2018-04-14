@@ -114,12 +114,23 @@ export class Menu extends Module {
 }
 export class FileSystem extends Module {
     static async readFile(filePath: string) {
-        return new Promise((resolve) => {
+        return new Promise<string>((resolve) => {
             setCallbackHandler(++seq, (value) => {
                 delete callbacks[seq];
                 resolve(value);
             });
             sendMessage("FileSystem", "readFile", {
+                filePath
+            }, seq);
+        });
+    }
+    static async readdir(filePath: string) {
+        return new Promise<string[]>((resolve) => {
+            setCallbackHandler(++seq, (value) => {
+                delete callbacks[seq];
+                resolve(value);
+            });
+            sendMessage("FileSystem", "readdir", {
                 filePath
             }, seq);
         });
