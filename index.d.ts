@@ -1,15 +1,14 @@
-declare var __NEUTRINO_SEND_MESSAGE: (json: any) => void;
-declare var __NEUTRINO_MESSAGE_HANDLER, __NEUTRINO_MENU_HANDLER, __NEUTRINO_BROADCAST_HANDLER;
+declare var __NEUTRINO_SEND_MESSAGE: (json: any) => void, __NEUTRINO_MENU_HANDLER, __NEUTRINO_MESSAGE_HANDLER, __NEUTRINO_BROADCAST_HANDLER;
 
-__NEUTRINO_MESSAGE_HANDLER = function ([seq, data]) {
+window.__NEUTRINO_MESSAGE_HANDLER = function ([seq, data]) {
     callbacks[seq] && callbacks[seq](data);
-}
+};
 
-__NEUTRINO_BROADCAST_HANDLER = function(args) {
+window.__NEUTRINO_BROADCAST_HANDLER = function(args) {
     for(var listener of broadcastListeners) {
         listener.call(listener, args);
     }
-}
+};
 
 interface Message {
     type: string;
@@ -37,7 +36,7 @@ var menuIndex = 0;
 var menuCallbacks = {};
 var broadcastListeners: Array<() => void> = [];
 
-__NEUTRINO_MENU_HANDLER = function(tag) {
+window.__NEUTRINO_MENU_HANDLER = function(tag) {
     menuCallbacks[tag] && menuCallbacks[tag]();
 }
 

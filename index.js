@@ -1,7 +1,7 @@
-__NEUTRINO_MESSAGE_HANDLER = function ([seq, data]) {
+window.__NEUTRINO_MESSAGE_HANDLER = function ([seq, data]) {
     callbacks[seq] && callbacks[seq](data);
 };
-__NEUTRINO_BROADCAST_HANDLER = function (args) {
+window.__NEUTRINO_BROADCAST_HANDLER = function (args) {
     for (var listener of broadcastListeners) {
         listener.call(listener, args);
     }
@@ -20,7 +20,7 @@ function setCallbackHandler(seq, cb) {
 var menuIndex = 0;
 var menuCallbacks = {};
 var broadcastListeners = [];
-__NEUTRINO_MENU_HANDLER = function (tag) {
+window.__NEUTRINO_MENU_HANDLER = function (tag) {
     menuCallbacks[tag] && menuCallbacks[tag]();
 };
 function refactorMenu(menu) {
