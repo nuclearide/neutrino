@@ -86,10 +86,15 @@ export class Menu extends Module {
 }
 export class FileSystem extends Module {
     static async readFile(filePath) {
-        return new Promise((resolve) => {
+        return new Promise((resolve, reject) => {
             setCallbackHandler(++seq, (value) => {
                 delete callbacks[seq];
-                resolve(value);
+                if (value[1]) {
+                    reject(value[1]);
+                }
+                else {
+                    resolve(value[0]);
+                }
             });
             sendMessage("FileSystem", "readFile", {
                 filePath
